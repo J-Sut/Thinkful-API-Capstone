@@ -15,3 +15,7 @@ h1 {
 input {
 	font-size: 1.4em;
 }
+
+.hide {
+	display: none;
+}

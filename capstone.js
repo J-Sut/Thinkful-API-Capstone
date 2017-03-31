@@ -12,7 +12,7 @@ function getFlickrApiData(searchTerm, callback) {
 	console.log("searchterm: "+ searchTerm);
 	var flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&jsoncallback=?";
 	var query = {
-		api_key: "25bce55818bb223cdc4599373b455323",
+		api_key: "9f66f0eb170df4e593eccf8510114a2e",
 		tags: searchTerm,
 		format: "json",
 	}; 
@@ -30,30 +30,49 @@ function gotFlickrData(data) {
 
 // format for displaying an image: 
 // https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
+// https://farm3.staticflickr.com/2844/33709591326_08e51b4564.jpg
 
 // 3) f(render-State)
+
+function loadHappening(visible) {
+	if (visible) {
+		$('#loading-screen').removeClass('hide');
+	} else {
+		$('#loading-screen').addClass('hide');	
+	}
+};
+
+function clearPastResults() {
+	$('#display-results').empty();
+};
 
 function displayFlickrResults(data) {
 //*** Can enter into the object like this
 	console.log("from callback: " + data);
+	console.log(data);
 	
 	let path = data.photos.photo;
-	console.log(path);
+	//console.log(path);
 
 
 	for (var i = 0; i <path.length; i++) {
-		let farmId = data.photos.photo[i].farm;
-		let serverId = data.photos.photo[i].server;
-		let imageId = data.photos.photo[i].id;
-		let secretId = data.photos.photo[i].secret;
+		let farmId = path[i].farm;
+		let serverId = path[i].server;
+		let imageId = path[i].id;
+		let secretId = path[i].secret;
+		let imageURL = "https://farm" + farmId + ".staticflickr.com/" + serverId + "/" + imageId + "_" + secretId + ".jpg";
+		let imgElement = $('<img>', {src: imageURL, class: "thumbnails"});
 
 
-		$('#display-results').append( "<li>" + data.photos.photo[i].owner + "</li>");
+		//console.log("imgElement: " + imgElement);
+
+
+		$('#display-results').append(imgElement);
+
+		//$('#display-results').append("<li>" + "https://farm" + farmId + ".staticflickr.com/" serverId + "/" + imageId + "_" + secretId + ".jpg" + "</li>");
 	}
 
-
-
-	
+	loadHappening(false);	
 	//console.log("inside displayFlickrResults");
 
 };
@@ -67,5 +86,8 @@ $('#submit').on("click", function() {
 
 	var searchTerm = $('#input_area').val();
 
+	clearPastResults();
+	loadHappening(true);
 	getFlickrApiData(searchTerm, gotFlickrData);
+
 });
