@@ -6,20 +6,69 @@
 
 // 2) f(modify-State)
 
+
+
+/*
+
+function analyzeImage() {  
+    $.ajax({
+        url: "https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=tags&details=&language=en",
+        beforeSend: function(xhrObj){
+            // Request headers
+            xhrObj.setRequestHeader("Content-Type","application/json");
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","7dd9774ea69f483c82f3dd8a8bf90582");
+        },
+
+        type: "POST",
+        // Request body
+        data: "https://media.freepik.com/accounts/img/badges/you_are_on_top.svg",
+    })
+    .done(function(data) {
+        alert("success");
+        console.log(data)
+    })
+    .fail(function() {
+        alert("error");
+    });
+};
+
+*/
+
+
+
+function getRelatedWords(searchTerm, callback) {
+	let datamuseURL = "https://api.datamuse.com/words?";
+	let query = {
+		ml: searchTerm, 
+		max: 10
+	}
+
+	$.getJSON(datamuseURL, query, callback)
+};
+
+function gotRelatedWords(data) {
+	for (var i = 0; i < data.length; i++) {
+		let searchTerm = data[i].word
+		console.log(searchTerm);
+		getFlickrApiData(searchTerm, gotFlickrData);
+
+	}
+};
+
 //parts of the api request
 function getFlickrApiData(searchTerm, callback) {
-	console.log("getFlickrApiData called ");
-	console.log("searchterm: "+ searchTerm);
+//	console.log("getFlickrApiData called ");
+//	console.log("searchterm: "+ searchTerm);
 	var flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&jsoncallback=?";
 	var query = {
 		api_key: "9f66f0eb170df4e593eccf8510114a2e",
 		tags: searchTerm,
-		format: "json",
+		format: "json", 
+		per_page: 5
 	}; 
 
 	//console.log(flickrURL + query.api_key + query.tags + query.format);
 	$.getJSON(flickrURL, query, callback);
-	console.log("after .getJSON request");
 
 };
 function gotFlickrData(data) {
@@ -34,6 +83,7 @@ function gotFlickrData(data) {
 
 // 3) f(render-State)
 
+
 function loadHappening(visible) {
 	if (visible) {
 		$('#loading-screen').removeClass('hide');
@@ -47,9 +97,8 @@ function clearPastResults() {
 };
 
 function displayFlickrResults(data) {
-//*** Can enter into the object like this
-	console.log("from callback: " + data);
-	console.log(data);
+//	console.log("from callback: " + data);
+//	console.log(data);
 	
 	let path = data.photos.photo;
 	//console.log(path);
@@ -78,16 +127,24 @@ function displayFlickrResults(data) {
 };
 
 
-
 // 4) Event Listeners
 
-$('#submit').on("click", function() {
-	console.log("submit button working");
-
+//$('#submit').on("click", function() {};
+//	console.log("submit button working");
+$('#inputForm').onsubmit(function() {
 	var searchTerm = $('#input_area').val();
 
+	getRelatedWords(searchTerm, gotRelatedWords);
 	clearPastResults();
 	loadHappening(true);
-	getFlickrApiData(searchTerm, gotFlickrData);
-
+	//getFlickrApiData(searchTerm, gotFlickrData);
+	//analyzeImage();
 });
+
+
+
+
+
+
+
+
