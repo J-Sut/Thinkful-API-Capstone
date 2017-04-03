@@ -8,7 +8,7 @@
 
 
 
-
+/*
 function analyzeImage() {  
     $.ajax({
         url: "https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=tags&details=&language=en",
@@ -26,16 +26,13 @@ function analyzeImage() {
         alert("success");
         console.log(data)
     })
+
     .fail(function() {
         console.log("error");
     });
 };
 
-
-
-
-
-
+*/
 
 function getRelatedWords(searchTerm, callback) {
 	let datamuseURL = "https://api.datamuse.com/words?";
@@ -62,10 +59,10 @@ function getFlickrApiData(searchTerm, callback) {
 //	console.log("searchterm: "+ searchTerm);
 	let flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&jsoncallback=?";
 	let query = {
-		api_key: "9f66f0eb170df4e593eccf8510114a2e",
-		tags: searchTerm,
-		format: "json", 
-		per_page: 5
+			api_key: "9f66f0eb170df4e593eccf8510114a2e",
+			tags: searchTerm,
+			format: "json", 
+			per_page: 5
 	}; 
 
 	//console.log(flickrURL + query.api_key + query.tags + query.format);
@@ -130,7 +127,8 @@ function displayFlickrResults(data) {
 
 // 4) Event Listeners
 
-$('#submit').on("click", function() {
+$('form').on("submit", function(e) {
+	e.preventDefault();
 //	console.log("submit button working");
 
 	let searchTerm = $('#input_area').val();
@@ -142,7 +140,6 @@ $('#submit').on("click", function() {
 	//analyzeImage();
 });
 
-//$('#instructions').accordion();
 
 
 
