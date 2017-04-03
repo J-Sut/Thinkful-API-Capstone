@@ -6,6 +6,45 @@
 
 // 2) f(modify-State)
 
+
+
+/*
+
+function analyzeImage() {  
+    $.ajax({
+        url: "https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=tags&details=&language=en",
+        beforeSend: function(xhrObj){
+            // Request headers
+            xhrObj.setRequestHeader("Content-Type","application/json");
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","7dd9774ea69f483c82f3dd8a8bf90582");
+        },
+
+        type: "POST",
+        // Request body
+        data: "https://media.freepik.com/accounts/img/badges/you_are_on_top.svg",
+    })
+    .done(function(data) {
+        alert("success");
+        console.log(data)
+    })
+    .fail(function() {
+        alert("error");
+    });
+};
+
+
+
+
+
+
+
+*/
+
+
+
+
+
+
 function getRelatedWords(searchTerm, callback) {
 	let datamuseURL = "https://api.datamuse.com/words?";
 	let query = {
@@ -108,7 +147,7 @@ $('#submit').on("click", function() {
 	clearPastResults();
 	loadHappening(true);
 	//getFlickrApiData(searchTerm, gotFlickrData);
-
+	//analyzeImage();
 });
 
 
