@@ -37,8 +37,6 @@ function analyzeImage() {
 
 
 
-
-
 function getRelatedWords(searchTerm, callback) {
 	let datamuseURL = "https://api.datamuse.com/words?";
 	let query = {
@@ -141,7 +139,7 @@ $('#submit').on("click", function() {
 	clearPastResults();
 	loadHappening(true);
 	//getFlickrApiData(searchTerm, gotFlickrData);
-	analyzeImage();
+	//analyzeImage();
 });
 
 //$('#instructions').accordion();
