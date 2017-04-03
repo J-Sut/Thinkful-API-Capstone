@@ -8,7 +8,10 @@
 
 
 
+<<<<<<< HEAD
 /*
+=======
+>>>>>>> master
 
 function analyzeImage() {  
     $.ajax({
@@ -28,11 +31,23 @@ function analyzeImage() {
         console.log(data)
     })
     .fail(function() {
+<<<<<<< HEAD
         alert("error");
     });
 };
 
 */
+=======
+        console.log("error");
+    });
+};
+
+
+
+
+
+
+>>>>>>> master
 
 
 
@@ -59,8 +74,13 @@ function gotRelatedWords(data) {
 function getFlickrApiData(searchTerm, callback) {
 //	console.log("getFlickrApiData called ");
 //	console.log("searchterm: "+ searchTerm);
+<<<<<<< HEAD
 	var flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&jsoncallback=?";
 	var query = {
+=======
+	let flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&jsoncallback=?";
+	let query = {
+>>>>>>> master
 		api_key: "9f66f0eb170df4e593eccf8510114a2e",
 		tags: searchTerm,
 		format: "json", 
@@ -129,16 +149,16 @@ function displayFlickrResults(data) {
 
 // 4) Event Listeners
 
-//$('#submit').on("click", function() {};
+$('#submit').on("click", function() {
 //	console.log("submit button working");
-$('#inputForm').onsubmit(function() {
-	var searchTerm = $('#input_area').val();
+
+	let searchTerm = $('#input_area').val();
 
 	getRelatedWords(searchTerm, gotRelatedWords);
 	clearPastResults();
 	loadHappening(true);
 	//getFlickrApiData(searchTerm, gotFlickrData);
-	//analyzeImage();
+	analyzeImage();
 });
 
 
