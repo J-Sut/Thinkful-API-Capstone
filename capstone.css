@@ -1,6 +1,7 @@
 * {
-	margin: 15px;
+	margin: 0px;
 	padding: 10px;
+	border-radius: 5px;
 }
 
 body {
@@ -10,12 +11,39 @@ body {
 h1 {
 	background-color: rgba(142,53,87,1);
 	color: rgba(247,242,178,1);
+	text-align: center;
+	font-size: 2.5em;
+	max-width: 85%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 input {
 	font-size: 1.4em;
 }
 
+div {
+	width: 90%;
+	padding: 0;
+}
+
+form {
+	max-width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+ul {
+	padding: 0;
+}
+
 .hide {
 	display: none;
+}
+
+.thumbnails {
+	border: 2px double;
+	border-color: rgb(247,242,178);
+	padding: 5px;
+	margin: 1px;
 }
