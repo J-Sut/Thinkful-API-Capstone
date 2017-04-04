@@ -8,10 +8,7 @@
 
 
 
-<<<<<<< HEAD
 /*
-=======
->>>>>>> master
 
 function analyzeImage() {  
     $.ajax({
@@ -30,24 +27,13 @@ function analyzeImage() {
         alert("success");
         console.log(data)
     })
-    .fail(function() {
-<<<<<<< HEAD
-        alert("error");
-    });
-};
 
-*/
-=======
+    .fail(function() {
         console.log("error");
     });
 };
 
-
-
-
-
-
->>>>>>> master
+*/
 
 function getRelatedWords(searchTerm, callback) {
 	let datamuseURL = "https://api.datamuse.com/words?";
@@ -68,17 +54,12 @@ function gotRelatedWords(data) {
 	}
 };
 
-//parts of the api request
+
 function getFlickrApiData(searchTerm, callback) {
 //	console.log("getFlickrApiData called ");
 //	console.log("searchterm: "+ searchTerm);
-<<<<<<< HEAD
 	var flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&jsoncallback=?";
 	var query = {
-=======
-	let flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&jsoncallback=?";
-	let query = {
->>>>>>> master
 		api_key: "9f66f0eb170df4e593eccf8510114a2e",
 		tags: searchTerm,
 		format: "json", 
@@ -147,7 +128,8 @@ function displayFlickrResults(data) {
 
 // 4) Event Listeners
 
-$('#submit').on("click", function() {
+$('form').on("submit", function(e) {
+	e.preventDefault();
 //	console.log("submit button working");
 
 	let searchTerm = $('#input_area').val();

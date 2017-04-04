@@ -10,7 +10,7 @@
 	<h1>Tangent Topic Image Triggers</h1>
 	<form id="inputForm">
 		<input type="text" name="searchbar" id="input_area">
-		<button id="submit" type="button">Run API Query</button>
+		<button id="submit" type="submit">Run API Query</button>
 	</form>
 
 	<section id="instructions">
@@ -35,10 +35,11 @@
 	
 	<div id="loading-screen" class="hide">Loading Photos</div>
 
-	<ol>
-		<section id="display-results"></section>
-	</ol>
+	<section id="resultsArea">
+		<div id="display-results"></div>
+	</section>
 <script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jquery-ui.min.js"></script>
 <script type="text/javascript" src="capstone.js"></script>
 </body>
 </html>
