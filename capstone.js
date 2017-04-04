@@ -49,7 +49,7 @@ function gotRelatedWords(data) {
 	for (var i = 0; i < data.length; i++) {
 		let searchTerm = data[i].word
 		console.log(searchTerm);
-		getFlickrApiData(searchTerm, gotFlickrData);
+		getFlickrApiData(searchTerm, displayFlickrResults);
 
 	}
 };
@@ -69,11 +69,6 @@ function getFlickrApiData(searchTerm, callback) {
 	//console.log(flickrURL + query.api_key + query.tags + query.format);
 	$.getJSON(flickrURL, query, callback);
 
-};
-function gotFlickrData(data) {
-//*** Can enter into the object like this
-	
-	displayFlickrResults(data);
 };
 
 // format for displaying an image: 
@@ -111,9 +106,7 @@ function displayFlickrResults(data) {
 		let imageURL = "https://farm" + farmId + ".staticflickr.com/" + serverId + "/" + imageId + "_" + secretId + ".jpg";
 		let imgElement = $('<img>', {src: imageURL, class: "thumbnails"});
 
-
 		//console.log("imgElement: " + imgElement);
-
 
 		$('#display-results').append(imgElement);
 
@@ -125,6 +118,11 @@ function displayFlickrResults(data) {
 
 };
 
+$('#instructions').accordion({
+	collapsible: true,
+	event: "click",
+	active: 2
+});
 
 // 4) Event Listeners
 
@@ -137,9 +135,10 @@ $('form').on("submit", function(e) {
 	getRelatedWords(searchTerm, gotRelatedWords);
 	clearPastResults();
 	loadHappening(true);
-	//getFlickrApiData(searchTerm, gotFlickrData);
+	//getFlickrApiData(searchTerm, displayFlickrResults);
 	//analyzeImage();
 });
+
 
 
 

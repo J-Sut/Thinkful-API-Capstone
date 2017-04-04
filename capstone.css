@@ -35,6 +35,13 @@ form {
 
 ul {
 	padding: 0;
+    list-style-position: inside;
+
+}
+
+#instructions {
+	background-color: rgba(247,242,178,.8);
+	width: 60%;
 }
 
 .hide {
