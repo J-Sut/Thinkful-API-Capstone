@@ -1,10 +1,9 @@
-// 1) State 
+// ************************ 1) State ************************
 
+var searchTerm = "placeHolder";
+var relatedTerm = [ "pH1", "pH2", "pH3"]; 
 
-
-// example of flickr API call that returns data: 
-
-// 2) f(modify-State)
+// ************************ 2) f(modify-State) ************************
 
 
 
@@ -39,35 +38,40 @@ function getRelatedWords(searchTerm, callback) {
 	let datamuseURL = "https://api.datamuse.com/words?";
 	let query = {
 		ml: searchTerm, 
-		max: 10
+		max: 2
 	}
 
-	$.getJSON(datamuseURL, query, callback)
+	$.getJSON(datamuseURL, query, function(data){
+		callback(data, searchTerm);
+	});
 };
 
-function gotRelatedWords(data) {
+function gotRelatedWords(data, searchTerm) {
 	for (var i = 0; i < data.length; i++) {
-		let searchTerm = data[i].word
-		console.log(searchTerm);
-		getFlickrApiData(searchTerm, displayFlickrResults);
-
+		let relatedTerm = data[i].word;
+		console.log(relatedTerm);
+		getFlickrApiData(relatedTerm, displayFlickrResults);
 	}
+	
+	console.log("data from gotRW: " + data);
 };
 
 
-function getFlickrApiData(searchTerm, callback) {
+function getFlickrApiData(term, callback) {
 //	console.log("getFlickrApiData called ");
-//	console.log("searchterm: "+ searchTerm);
+//console.log("searchterm: "+ searchTerm);
 	var flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&jsoncallback=?";
 	var query = {
 		api_key: "9f66f0eb170df4e593eccf8510114a2e",
-		tags: searchTerm,
+		tags: term,
 		format: "json", 
-		per_page: 5
+		per_page: 2
 	}; 
 
 	//console.log(flickrURL + query.api_key + query.tags + query.format);
-	$.getJSON(flickrURL, query, callback);
+	$.getJSON(flickrURL, query, function(data){
+		callback(data, term);
+	});
 
 };
 
@@ -75,7 +79,7 @@ function getFlickrApiData(searchTerm, callback) {
 // https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
 // https://farm3.staticflickr.com/2844/33709591326_08e51b4564.jpg
 
-// 3) f(render-State)
+// ************************ 3) f(render-State) ************************
 
 
 function loadHappening(visible) {
@@ -90,13 +94,27 @@ function clearPastResults() {
 	$('#display-results').empty();
 };
 
-function displayFlickrResults(data) {
+function displayFlickrResults(data, term) {
 //	console.log("from callback: " + data);
 //	console.log(data);
-	
-	let path = data.photos.photo;
-	//console.log(path);
+	console.log("searchTerm3: " + term);
+	makeCtrPanel(term);
+	// <div class="display-results">
+	// 	<h2>Term
+	// 	<img>...
+	// </div>
+	var results = $('<div>',{class: 'display-results '+ term});
 
+	results.append($("<h2>",{text: term}));
+
+	//******************************************************
+	// Make a new div
+	// Add a header element that displays the searchterm
+	// run the below loop appending items to "this" element
+	//******************************************************
+
+
+	let path = data.photos.photo;
 
 	for (var i = 0; i <path.length; i++) {
 		let farmId = path[i].farm;
@@ -108,11 +126,12 @@ function displayFlickrResults(data) {
 
 		//console.log("imgElement: " + imgElement);
 
-		$('#display-results').append(imgElement);
+		results.append(imgElement);
 
 		//$('#display-results').append("<li>" + "https://farm" + farmId + ".staticflickr.com/" serverId + "/" + imageId + "_" + secretId + ".jpg" + "</li>");
 	}
 
+	$('#resultsArea').append(results);
 	loadHappening(false);	
 	//console.log("inside displayFlickrResults");
 
@@ -124,22 +143,54 @@ $('#instructions').accordion({
 	active: 2
 });
 
-// 4) Event Listeners
+
+function makeCtrPanel(term) {
+
+	let sectionLabel = $('<label>', {text: term});
+	let button = $('<input>', {type: "checkbox", value: term, checked: true});
+	//$('checkbox').val();
+
+	sectionLabel.append(button);
+	$('#ctrPanel').append(sectionLabel);
+
+	// for each searchterm make button
+	// make checkbox show/hide related images
+
+};
+
+function toggleImgDisplay(){
+	var term = $(this).val();
+	//'div.yay'
+	$('div.'+term).toggleClass("hide");
+
+
+	// go to section with class= term
+	// toggle class hide
+};
+
+
+// ************************ 4) Event Listeners ************************
+
+$("#ctrPanel").on("change", "input[type=checkbox]", toggleImgDisplay);
 
 $('form').on("submit", function(e) {
 	e.preventDefault();
-//	console.log("submit button working");
 
-	let searchTerm = $('#input_area').val();
+	var searchTerm = $('#input_area').val();
+	console.log("searchTerm2: " + searchTerm);
+	console.log("relatedTerm2: " + relatedTerm);
 
+
+	getFlickrApiData(searchTerm, displayFlickrResults);
 	getRelatedWords(searchTerm, gotRelatedWords);
 	clearPastResults();
 	loadHappening(true);
-	//getFlickrApiData(searchTerm, displayFlickrResults);
 	//analyzeImage();
 });
 
 
+//	console.log("searchTerm1: " + searchTerm);
+//	console.log("relatedTerm1: " + relatedTerm);
 
 
 
