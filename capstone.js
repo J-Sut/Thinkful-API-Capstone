@@ -91,7 +91,9 @@ function loadHappening(visible) {
 };
 
 function clearPastResults() {
-	$('#display-results').empty();
+	$('.display-results').empty();
+	$('#panelDisplay').empty();
+
 };
 
 function displayFlickrResults(data, term) {
@@ -146,12 +148,14 @@ $('#instructions').accordion({
 
 function makeCtrPanel(term) {
 
+	let ctrlPanelList = $('<li>', {class: 'imgDisplay'});
 	let sectionLabel = $('<label>', {text: term});
-	let button = $('<input>', {type: "checkbox", value: term, checked: true});
+	let button = $('<input>', {type: "checkbox", value: term, checked: true, class: "panelChecks"});
 	//$('checkbox').val();
 
+	ctrlPanelList.append(sectionLabel);
 	sectionLabel.append(button);
-	$('#ctrPanel').append(sectionLabel);
+	$('#panelDisplay').append(ctrlPanelList);
 
 	// for each searchterm make button
 	// make checkbox show/hide related images

@@ -1,3 +1,14 @@
+
+.colors {
+/*red */rgba(117, 27, 43, 1); 
+/*light blue */rgba(113, 141, 168, 1);
+/*dark blue */rgba(1, 62, 95, 1);
+/*pale yellow */rgba(242, 213, 123, 1);
+/*near white */rgba(242, 243, 243, 1);
+}
+
+
+
 * {
 	margin: 0px;
 	padding: 10px;
@@ -5,21 +16,17 @@
 }
 
 body {
-	background-color: rgba(132,129,91,1);
+	background-color: rgba(1, 62, 95, 1);
 }
 
 h1 {
-	background-color: rgba(142,53,87,1);
-	color: rgba(247,242,178,1);
+	background-color: rgba(117, 27, 43, 1);
+	color: rgba(242, 213, 123, 1);
 	text-align: center;
 	font-size: 2.5em;
 	max-width: 85%;
 	margin-left: auto;
 	margin-right: auto;
-}
-
-input {
-	font-size: 1.4em;
 }
 
 div {
@@ -34,14 +41,25 @@ form {
 }
 
 ul {
-	padding: 0;
     list-style-position: inside;
+    list-style-type: none;
+}
 
+label {
+	padding: 5px;
+	margin: 10px;
+}
+
+#input_area {
+	font-size: 1em;
+	background-color: rgba(242, 243, 243, 1);
 }
 
 #instructions {
-	background-color: rgba(247,242,178,.8);
+	color: rgba(1, 62, 95, 1);
+	background-color: rgba(242, 213, 123, 1);
 	width: 60%;
+	display: inherit;
 }
 
 .hide {
@@ -54,3 +72,48 @@ ul {
 	padding: 5px;
 	margin: 1px;
 }
+
+#ctrPanel {
+	font-size: 1.2em;
+	color: rgba(242, 243, 243, 1);
+	float: right;
+	text-align: right;
+	position: fixed;
+	margin: .3em;
+	padding: .3em;
+	/*background-color: rgba(117, 27, 43, .2);*/
+	max-width: 40%;
+	z-index: 0;
+	right: 3px;
+}
+
+.panelChecks{
+	margin: .2em;
+}
+
+.display-results {
+	background-color: rgba(113, 141, 168, 1);
+	color: /*red */rgba(117, 27, 43, 1); 
+	margin: 1em;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.thumbnails {
+	height: 400px;
+	width: 400px;
+	object-fit: cover;
+	margin-right: auto;
+	margin-left: auto;
+	margin: 2em;
+	text-align: center;
+	position: relative
+}
+
+
+
+
+
+
+
+
