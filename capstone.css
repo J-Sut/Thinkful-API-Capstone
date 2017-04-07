@@ -7,8 +7,6 @@
 /*near white */rgba(242, 243, 243, 1);
 }
 
-
-
 * {
 	margin: 0px;
 	padding: 10px;
@@ -45,7 +43,7 @@ form {
 	max-width: 85%;
 	margin-left: auto;
 	margin-right: auto;
-	float: ;
+	float: left;
 }
 
 ul {
@@ -64,18 +62,21 @@ label {
 	margin: 10px;
 	text-align: center;
 	max-width: 95%;
-	margin-left: auto;
+	margin-left: 8em;
 	margin-right: auto;
-}
-
-#input_area {
-	font-size: 1em;
-	background-color: rgba(242, 243, 243, 1);
 }
 
 #inputForm {
 	max-width: 30%;
 	display: inline-block;
+	margin: 0px;
+	margin-left: 3em;
+	padding: 0;
+}
+
+#input_area {
+	font-size: 1em;
+	background-color: rgba(242, 243, 243, 1);
 }
 
 #instructions {
@@ -98,7 +99,7 @@ label {
 .thumbnails {
 	border: 2px double;
 	border-color: /*red */rgba(117, 27, 43, 1); 
-	padding: 5px;
+	padding: 1em;
 	margin: .8em;
 	height: 400px;
 	width: 400px;
@@ -192,6 +193,20 @@ float: center;
 
 }
 
+
+@media screen and (min-width: 2200px) {
+
+.col6 {
+	max-width: 15%;
+	display: auto;
+	float: left;
+}
+
+
+
+
+
+}
 
 
 

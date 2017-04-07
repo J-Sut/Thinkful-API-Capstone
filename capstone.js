@@ -67,7 +67,7 @@ function displayFlickrResults(data, term) {
 
 	let termClass = term.replace(" ", "-");
 
-	var results = $('<div>',{class: 'display-results '+ termClass + " col3"});
+	var results = $('<div>',{class: 'display-results '+ termClass + " col3 col6"});
 
 	results.append($("<h2>",{text: term, class: 'picsLabel'}));
 
