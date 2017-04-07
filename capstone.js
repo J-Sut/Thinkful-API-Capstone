@@ -36,7 +36,7 @@ function getRelatedWords(searchTerm, callback) {
 	let datamuseURL = "https://api.datamuse.com/words?";
 	let query = {
 		ml: searchTerm, 
-		max: 2
+		max: 5
 	}
 
 	$.getJSON(datamuseURL, query, function(data){
@@ -61,7 +61,7 @@ function getFlickrApiData(term, callback) {
 		tags: term,
 		safe_search: 1,
 		format: "json", 
-		per_page: 2
+		per_page: 3
 	}; 
 
 	//console.log(flickrURL + query.api_key + query.tags + query.format);
@@ -96,7 +96,9 @@ function displayFlickrResults(data, term) {
 	//console.log("searchTerm3: " + term);
 	makeCtrPanel(term);
 
-	var results = $('<div>',{class: 'display-results '+ term});
+	let termClass = term.replace(" ", "-");
+
+	var results = $('<div>',{class: 'display-results '+ termClass + " col3"});
 
 	results.append($("<h2>",{text: term, class: 'picsLabel'}));
 
@@ -108,7 +110,7 @@ function displayFlickrResults(data, term) {
 		let imageId = path[i].id;
 		let secretId = path[i].secret;
 		let imageURL = "https://farm" + farmId + ".staticflickr.com/" + serverId + "/" + imageId + "_" + secretId + ".jpg";
-		let imgElement = $('<img>', {src: imageURL, class: "thumbnails"});
+		let imgElement = $('<div>', {style: 'background-image: url("' + imageURL + '")', class: "thumbnails"});
 
 		results.append(imgElement);
 
@@ -130,9 +132,10 @@ $('#instructions').accordion({
 
 function makeCtrPanel(term) {
 
+	let termClass = term.replace(" ", "-");
 	let ctrlPanelList = $('<li>', {class: 'imgDisplay'});
 	let sectionLabel = $('<label>', {text: term});
-	let button = $('<input>', {type: "checkbox", value: term, checked: true, class: "panelChecks"});
+	let button = $('<input>', {type: "checkbox", value: termClass, checked: true, class: "panelChecks"});
 
 	ctrlPanelList.append(sectionLabel);
 	sectionLabel.append(button);
