@@ -3,35 +3,6 @@
 
 // ************************ 2) f(modify-State) ************************
 
-
-
-/*
-
-function analyzeImage() {  
-    $.ajax({
-        url: "https://westus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=tags&details=&language=en",
-        beforeSend: function(xhrObj){
-            // Request headers
-            xhrObj.setRequestHeader("Content-Type","application/json");
-            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","7dd9774ea69f483c82f3dd8a8bf90582");
-        },
-
-        type: "POST",
-        // Request body
-        data: "https://media.freepik.com/accounts/img/badges/you_are_on_top.svg",
-    })
-    .done(function(data) {
-        alert("success");
-        console.log(data)
-    })
-
-    .fail(function() {
-        console.log("error");
-    });
-};
-
-*/
-
 function getRelatedWords(searchTerm, callback) {
 	let datamuseURL = "https://api.datamuse.com/words?";
 	let query = {
@@ -53,8 +24,6 @@ function gotRelatedWords(data, searchTerm) {
 
 
 function getFlickrApiData(term, callback) {
-//	console.log("getFlickrApiData called ");
-//console.log("searchterm: "+ searchTerm);
 	var flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&jsoncallback=?";
 	var query = {
 		api_key: "9f66f0eb170df4e593eccf8510114a2e",
@@ -71,7 +40,7 @@ function getFlickrApiData(term, callback) {
 
 };
 
-// format for displaying an image: 
+// format for displaying a Flickr image by URL: 
 // https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg
 // https://farm3.staticflickr.com/2844/33709591326_08e51b4564.jpg
 
@@ -89,16 +58,16 @@ function loadHappening(visible) {
 function clearPastResults() {
 	$('.display-results').empty();
 	$('#panelDisplay').empty();
+	$('#resultsArea').empty();
 
 };
 
 function displayFlickrResults(data, term) {
-	//console.log("searchTerm3: " + term);
 	makeCtrPanel(term);
 
 	let termClass = term.replace(" ", "-");
 
-	var results = $('<div>',{class: 'display-results '+ termClass + " col3"});
+	var results = $('<div>',{class: 'display-results '+ termClass + " col3 col6"});
 
 	results.append($("<h2>",{text: term, class: 'picsLabel'}));
 
