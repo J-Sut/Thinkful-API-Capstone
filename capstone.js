@@ -1,7 +1,5 @@
 // ************************ 1) State ************************
 
-var searchTerm = "placeHolder";
-var relatedTerm = [ "pH1", "pH2", "pH3"]; 
 
 // ************************ 2) f(modify-State) ************************
 
@@ -49,11 +47,8 @@ function getRelatedWords(searchTerm, callback) {
 function gotRelatedWords(data, searchTerm) {
 	for (var i = 0; i < data.length; i++) {
 		let relatedTerm = data[i].word;
-		console.log(relatedTerm);
 		getFlickrApiData(relatedTerm, displayFlickrResults);
 	}
-	
-	console.log("data from gotRW: " + data);
 };
 
 
@@ -64,6 +59,7 @@ function getFlickrApiData(term, callback) {
 	var query = {
 		api_key: "9f66f0eb170df4e593eccf8510114a2e",
 		tags: term,
+		safe_search: 1,
 		format: "json", 
 		per_page: 2
 	}; 
@@ -84,9 +80,9 @@ function getFlickrApiData(term, callback) {
 
 function loadHappening(visible) {
 	if (visible) {
-		$('#loading-screen').removeClass('hide');
+		$('#loadingScreen').removeClass('hide');
 	} else {
-		$('#loading-screen').addClass('hide');	
+		$('#loadingScreen').addClass('hide');	
 	}
 };
 
@@ -97,24 +93,12 @@ function clearPastResults() {
 };
 
 function displayFlickrResults(data, term) {
-//	console.log("from callback: " + data);
-//	console.log(data);
-	console.log("searchTerm3: " + term);
+	//console.log("searchTerm3: " + term);
 	makeCtrPanel(term);
-	// <div class="display-results">
-	// 	<h2>Term
-	// 	<img>...
-	// </div>
+
 	var results = $('<div>',{class: 'display-results '+ term});
 
-	results.append($("<h2>",{text: term}));
-
-	//******************************************************
-	// Make a new div
-	// Add a header element that displays the searchterm
-	// run the below loop appending items to "this" element
-	//******************************************************
-
+	results.append($("<h2>",{text: term, class: 'picsLabel'}));
 
 	let path = data.photos.photo;
 
@@ -125,8 +109,6 @@ function displayFlickrResults(data, term) {
 		let secretId = path[i].secret;
 		let imageURL = "https://farm" + farmId + ".staticflickr.com/" + serverId + "/" + imageId + "_" + secretId + ".jpg";
 		let imgElement = $('<img>', {src: imageURL, class: "thumbnails"});
-
-		//console.log("imgElement: " + imgElement);
 
 		results.append(imgElement);
 
@@ -151,39 +133,24 @@ function makeCtrPanel(term) {
 	let ctrlPanelList = $('<li>', {class: 'imgDisplay'});
 	let sectionLabel = $('<label>', {text: term});
 	let button = $('<input>', {type: "checkbox", value: term, checked: true, class: "panelChecks"});
-	//$('checkbox').val();
 
 	ctrlPanelList.append(sectionLabel);
 	sectionLabel.append(button);
 	$('#panelDisplay').append(ctrlPanelList);
-
-	// for each searchterm make button
-	// make checkbox show/hide related images
-
 };
 
 function toggleImgDisplay(){
 	var term = $(this).val();
-	//'div.yay'
 	$('div.'+term).toggleClass("hide");
-
-
-	// go to section with class= term
-	// toggle class hide
 };
 
 
 // ************************ 4) Event Listeners ************************
 
-$("#ctrPanel").on("change", "input[type=checkbox]", toggleImgDisplay);
-
 $('form').on("submit", function(e) {
 	e.preventDefault();
 
 	var searchTerm = $('#input_area').val();
-	console.log("searchTerm2: " + searchTerm);
-	console.log("relatedTerm2: " + relatedTerm);
-
 
 	getFlickrApiData(searchTerm, displayFlickrResults);
 	getRelatedWords(searchTerm, gotRelatedWords);
@@ -192,11 +159,7 @@ $('form').on("submit", function(e) {
 	//analyzeImage();
 });
 
-
-//	console.log("searchTerm1: " + searchTerm);
-//	console.log("relatedTerm1: " + relatedTerm);
-
-
+$("#ctrPanel").on("change", "input[type=checkbox]", toggleImgDisplay);
 
 
 
