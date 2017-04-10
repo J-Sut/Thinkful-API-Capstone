@@ -7,7 +7,7 @@ function getRelatedWords(searchTerm, callback) {
 	let datamuseURL = "https://api.datamuse.com/words?";
 	let query = {
 		ml: searchTerm, 
-		max: 5
+		max: 2
 	}
 
 	$.getJSON(datamuseURL, query, function(data){
@@ -30,7 +30,7 @@ function getFlickrApiData(term, callback) {
 		tags: term,
 		safe_search: 1,
 		format: "json", 
-		per_page: 3
+		per_page: 2
 	}; 
 
 	//console.log(flickrURL + query.api_key + query.tags + query.format);
