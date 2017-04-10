@@ -7,7 +7,7 @@ function getRelatedWords(searchTerm, callback) {
 	let datamuseURL = "https://api.datamuse.com/words?";
 	let query = {
 		ml: searchTerm, 
-		max: 2
+		max: 5
 	}
 
 	$.getJSON(datamuseURL, query, function(data){
