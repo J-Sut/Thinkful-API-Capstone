@@ -30,7 +30,7 @@ function getFlickrApiData(term, callback) {
 		tags: term,
 		safe_search: 1,
 		format: "json", 
-		per_page: 2
+		per_page: 3
 	}; 
 
 	//console.log(flickrURL + query.api_key + query.tags + query.format);
