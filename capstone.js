@@ -1,6 +1,5 @@
 // ************************ 1) State ************************
 
-
 // ************************ 2) f(modify-State) ************************
 
 function getRelatedWords(searchTerm, callback) {
@@ -22,7 +21,6 @@ function gotRelatedWords(data, searchTerm) {
 	}
 };
 
-
 function getFlickrApiData(term, callback) {
 	var flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&jsoncallback=?";
 	var query = {
@@ -37,7 +35,6 @@ function getFlickrApiData(term, callback) {
 	$.getJSON(flickrURL, query, function(data){
 		callback(data, term);
 	});
-
 };
 
 // format for displaying a Flickr image by URL: 
@@ -59,7 +56,6 @@ function clearPastResults() {
 	$('.display-results').empty();
 	$('#panelDisplay').empty();
 	$('#resultsArea').empty();
-
 };
 
 function displayFlickrResults(data, term) {
@@ -89,7 +85,6 @@ function displayFlickrResults(data, term) {
 	$('#resultsArea').append(results);
 	loadHappening(false);	
 	//console.log("inside displayFlickrResults");
-
 };
 
 $('#instructions').accordion({
@@ -98,9 +93,7 @@ $('#instructions').accordion({
 	active: 2
 });
 
-
 function makeCtrPanel(term) {
-
 	let termClass = term.replace(" ", "-");
 	let ctrlPanelList = $('<li>', {class: 'imgDisplay'});
 	let sectionLabel = $('<label>', {text: term});
@@ -116,6 +109,17 @@ function toggleImgDisplay(){
 	$('div.'+term).toggleClass("hide");
 };
 
+function greenPassed() {
+	$('#clock').css("background-color", "green")
+};
+
+function yellowPassed() {
+	$('#clock').css("background-color", "yellow")
+};
+
+function redPassed() {
+	$('#clock').css("background-color", "red")
+};
 
 // ************************ 4) Event Listeners ************************
 
@@ -131,7 +135,13 @@ $('form').on("submit", function(e) {
 	//analyzeImage();
 });
 
-$("#ctrPanel").on("change", "input[type=checkbox]", toggleImgDisplay);
+$('#ctrPanel').on("change", "input[type=checkbox]", toggleImgDisplay);
+
+$('#startClock').on("click", function(){
+	setTimeout(greenPassed, 1000);
+	setTimeout(yellowPassed, 2000);
+	setTimeout(redPassed, 3000);
+});
 
 
 

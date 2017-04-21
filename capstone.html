@@ -13,7 +13,7 @@
 		<div id="navBar">
 			<form id="inputForm">
 				<input type="text" name="searchbar" id="input_area">
-				<button id="submit" type="submit">Run API Query</button>
+				<button id="submit" type="submit">Search Triggers</button>
 			</form>
 			
 			<section id="instructions">
@@ -21,7 +21,7 @@
 				<div id="writtenInstructions">
 					<div class="instructionSection">
 						<p>Table topics are a chance to practice impromptu speaking.</p>
-						<p>The purpose is to practice organizing our thoughts on the fly. This practice helps us to thrive in those moments when life calls on us to rise to occasion from interviews, to dates, meetings, and much more.</p>
+						<p>The purpose is to help practice organizing our thoughts on the fly. This practice helps us to thrive in those moments when life calls on us to rise to occasion from interviews, to dates, meetings, and much more.</p>
 					</div> <!-- instructionSection -->
 					<div class="instructionSection">
 						<h3>How it works</h3>
@@ -43,12 +43,14 @@
 					</div> <!-- instructionSection -->
 				</div> <!-- writtenInstructions -->
 			</section> <!-- instructions -->
-		</div>			
+		</div>	<!-- navBar -->
+		<div id="ctrPanel">
+			<ul id="panelDisplay"></ul>
+		</div> <!-- ctrPanel -->
+		<section id="clock">
+			<button id="startClock">Start</button>
+		</section>
 	</header>
-
-	<div id="ctrPanel">
-		<ul id="panelDisplay"></ul>
-	</div> <!-- ctrPanel -->
 
 	<span id="loadingScreen" class="hide">Loading...</span>
 
