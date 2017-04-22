@@ -3,20 +3,23 @@
 <head>
 	<title>Table Topics Generator</title>
 	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css?family=Nunito|Roboto+Mono" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="capstone.css">
 </head>
 <body>
-
+	<h1>Table Topics Generator</h1>
 	<header>
-		<h1>Table Topics Generator</h1>
-
 		<div id="navBar">
 			<form id="inputForm">
 				<input type="text" name="searchbar" id="input_area">
-				<button id="submit" type="submit">Search Triggers</button>
+				<button id="submit" type="submit">Get Topic</button>
 			</form>
-			
-			<section id="instructions">
+		</div>	<!-- navBar -->
+		<div id="ctrPanel">
+			<ul id="panelDisplay"></ul>
+		</div> <!-- ctrPanel -->
+		<section id="clock">Start</section>
+		<section id="instructions">
 				<h3 id="instructionsTitle">How it works</h3>
 				<div id="writtenInstructions">
 					<div class="instructionSection">
@@ -43,13 +46,6 @@
 					</div> <!-- instructionSection -->
 				</div> <!-- writtenInstructions -->
 			</section> <!-- instructions -->
-		</div>	<!-- navBar -->
-		<div id="ctrPanel">
-			<ul id="panelDisplay"></ul>
-		</div> <!-- ctrPanel -->
-		<section id="clock">
-			<button id="startClock">Start</button>
-		</section>
 	</header>
 
 	<span id="loadingScreen" class="hide">Loading...</span>

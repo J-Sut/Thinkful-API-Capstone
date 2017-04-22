@@ -109,17 +109,27 @@ function toggleImgDisplay(){
 	$('div.'+term).toggleClass("hide");
 };
 
-function greenPassed() {
+function turnBlue() {
+	$('#clock').css("background-color", "rgba(1, 62, 95, 1)")
+};
+
+function turnGreen() {
 	$('#clock').css("background-color", "green")
 };
 
-function yellowPassed() {
+function turnYellow() {
 	$('#clock').css("background-color", "yellow")
 };
 
-function redPassed() {
+function turnRed() {
 	$('#clock').css("background-color", "red")
 };
+
+function turnBlack() {
+	$('#clock').css("background-color", "black")
+};
+
+$('instructionsTitle').hover('cursor: pointer', 'cursor: hand');
 
 // ************************ 4) Event Listeners ************************
 
@@ -137,10 +147,12 @@ $('form').on("submit", function(e) {
 
 $('#ctrPanel').on("change", "input[type=checkbox]", toggleImgDisplay);
 
-$('#startClock').on("click", function(){
-	setTimeout(greenPassed, 1000);
-	setTimeout(yellowPassed, 2000);
-	setTimeout(redPassed, 3000);
+$('#clock').on("click", function(){
+	turnBlue();
+	setTimeout(turnGreen, 10000);
+	setTimeout(turnYellow, 20000);
+	setTimeout(turnRed, 30000);
+	setTimeout(turnBlack, 35000);
 });
 
 
