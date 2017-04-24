@@ -109,6 +109,12 @@ function toggleImgDisplay(){
 	$('div.'+term).toggleClass("hide");
 };
 
+/*
+function switchLight(color) {
+	$('#clock').css("background-color", color)
+};
+*/
+
 function turnBlue() {
 	$('#clock').css("background-color", "rgba(1, 62, 95, 1)")
 };
@@ -142,7 +148,6 @@ $('form').on("submit", function(e) {
 	getRelatedWords(searchTerm, gotRelatedWords);
 	clearPastResults();
 	loadHappening(true);
-	//analyzeImage();
 });
 
 $('#ctrPanel').on("change", "input[type=checkbox]", toggleImgDisplay);
@@ -155,6 +160,15 @@ $('#clock').on("click", function(){
 	setTimeout(turnBlack, 35000);
 });
 
+/*
+$('#clock').on("click", function(){
+	switchLight("blue");
+	setTimeout(switchLight("green"), 1000);
+	setTimeout(switchLight("yellow"), 2000);
+	setTimeout(switchLight("red"), 3000);
+	setTimeout(switchLight("black"), 3500);
+});
+*/
 
 
 

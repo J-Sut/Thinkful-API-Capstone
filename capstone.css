@@ -1,16 +1,14 @@
 
-.assets {
-/*red */rgba(117, 27, 43, 1); 
-/*light blue */rgba(113, 141, 168, 1);
-/*dark blue */rgba(1, 62, 95, 1);
-/*pale yellow */rgba(242, 213, 123, 1);
-/*near white */rgba(242, 243, 243, 1);
+/*.assets {
+red rgba(117, 27, 43, 1); 
+light blue rgba(113, 141, 168, 1);
+dark blue rgba(1, 62, 95, 1);
+pale yellow rgba(242, 213, 123, 1);
+near white rgba(242, 243, 243, 1);
 font-family: 'Nunito', sans-serif;
 font-family: 'Roboto Mono', monospace;
 background-image: linear-gradient(to bottom, rgba(117, 27, 43, .2), rgba(117, 27, 43, 1)),url("assets/public_speaking.jpg");
-background-repeat: none;
-background-size: cover;
-}
+}*/
 
 * {
 	margin: 0px;
@@ -32,6 +30,7 @@ header {
 	height: 500px;
 	width: 100%;
 	margin: 0;
+	padding: 0;
 }
 
 body {
@@ -45,9 +44,9 @@ h1 {
 	color: rgba(242, 213, 123, 1);
 	text-align: center;
 	font-size: 2.5em;
-	max-width: 85%;
 	margin-left: auto;
 	margin-right: auto;
+	width: 100%;
 }
 
 div {
@@ -76,6 +75,11 @@ label {
 	margin-left: auto;
 	cursor: pointer; 
 }
+#topNav {
+	background-color: rgba(117, 27, 43, 1);
+	margin: 0;
+	width: 100%;
+}
 
 #navBar {
 	margin: 10px;
@@ -103,10 +107,10 @@ label {
 	font-size: 1.2em;
 	color: rgba(242, 243, 243, 1);
 	text-align: left;
-	margin: .1em;
-	padding: .3em;
+	margin: 0;
+	padding: 0;
 	/*background-color: rgba(117, 27, 43, .2);*/
-	max-width: 25%;
+	width: 25%;
 	float: left;
 	display: inline-block;
 }
@@ -127,7 +131,7 @@ label {
 	border-radius: 100%;
 	text-align: center;
 	vertical-align: center;	
-
+	cursor: pointer;
 }
 
 
@@ -135,12 +139,13 @@ label {
 	color: /*red */rgba(117, 27, 43, 1); 
 	background-color: rgba(242, 213, 123, .65);
 	width: 50%;
-	margin-left: auto;
-	margin-right: auto;
+	/*margin-left: auto;
+	margin-right: auto;*/
 	text-align: center;
 	padding: 0;
-	display: inline-block;
+	display: block;
 	overflow: scroll;
+	z-index: 100;
 }
 
 #instructionsTitle {
@@ -153,8 +158,13 @@ label {
 	margin-right: auto;
 }
 
+#resultsArea {
+	text-align: center;
+}
+
 .panelChecks{
 	margin: 1em;
+	cursor: pointer;
 }
 
 .display-results {
@@ -171,14 +181,14 @@ label {
 	border-color: /*red */rgba(117, 27, 43, 1); 
 	padding: 1em;
 	margin: .8em;
-	height: 350px;
+	height: 400px;
 	width: 450px;
 	background-repeat: none;
 	background-size: cover;
 	background-position: center;
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 80%;
+	max-width: 85%;
 }
 
 .display-results:nth-child(even) {
@@ -210,12 +220,11 @@ label {
 
 @media screen and (max-width: 1200px) {
 
-
-	#instructions {
+	/*#instructions {
 		display: inline-block;
 		max-width: 40%;
 		position: relative;
-	}
+	}*/
 
 	#inputForm {
 		max-width: 100%;
@@ -238,7 +247,6 @@ label {
 		display: auto;
 		float: none;
 	}
-
 }
 
 @media screen and (min-width: 2200px) {
@@ -248,7 +256,6 @@ label {
 		display: auto;
 		float: left;
 	}
-
 }
 
 
