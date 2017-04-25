@@ -1,13 +1,12 @@
 // ************************ 1) State ************************
 
-
 // ************************ 2) f(modify-State) ************************
 
 function getRelatedWords(searchTerm, callback) {
 	let datamuseURL = "https://api.datamuse.com/words?";
 	let query = {
 		ml: searchTerm, 
-		max: 2
+		max: 5
 	}
 
 	$.getJSON(datamuseURL, query, function(data){
@@ -22,7 +21,6 @@ function gotRelatedWords(data, searchTerm) {
 	}
 };
 
-
 function getFlickrApiData(term, callback) {
 	var flickrURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&jsoncallback=?";
 	var query = {
@@ -30,14 +28,13 @@ function getFlickrApiData(term, callback) {
 		tags: term,
 		safe_search: 1,
 		format: "json", 
-		per_page: 2
+		per_page: 3
 	}; 
 
 	//console.log(flickrURL + query.api_key + query.tags + query.format);
 	$.getJSON(flickrURL, query, function(data){
 		callback(data, term);
 	});
-
 };
 
 // format for displaying a Flickr image by URL: 
@@ -59,7 +56,6 @@ function clearPastResults() {
 	$('.display-results').empty();
 	$('#panelDisplay').empty();
 	$('#resultsArea').empty();
-
 };
 
 function displayFlickrResults(data, term) {
@@ -89,7 +85,6 @@ function displayFlickrResults(data, term) {
 	$('#resultsArea').append(results);
 	loadHappening(false);	
 	//console.log("inside displayFlickrResults");
-
 };
 
 $('#instructions').accordion({
@@ -98,9 +93,7 @@ $('#instructions').accordion({
 	active: 2
 });
 
-
 function makeCtrPanel(term) {
-
 	let termClass = term.replace(" ", "-");
 	let ctrlPanelList = $('<li>', {class: 'imgDisplay'});
 	let sectionLabel = $('<label>', {text: term});
@@ -116,6 +109,33 @@ function toggleImgDisplay(){
 	$('div.'+term).toggleClass("hide");
 };
 
+/*
+function switchLight(color) {
+	$('#clock').css("background-color", color)
+};
+*/
+
+function turnBlue() {
+	$('#clock').css("background-color", "rgba(1, 62, 95, 1)")
+};
+
+function turnGreen() {
+	$('#clock').css("background-color", "green")
+};
+
+function turnYellow() {
+	$('#clock').css("background-color", "yellow")
+};
+
+function turnRed() {
+	$('#clock').css("background-color", "red")
+};
+
+function turnBlack() {
+	$('#clock').css("background-color", "black")
+};
+
+$('instructionsTitle').hover('cursor: pointer', 'cursor: hand');
 
 // ************************ 4) Event Listeners ************************
 
@@ -128,11 +148,27 @@ $('form').on("submit", function(e) {
 	getRelatedWords(searchTerm, gotRelatedWords);
 	clearPastResults();
 	loadHappening(true);
-	//analyzeImage();
 });
 
-$("#ctrPanel").on("change", "input[type=checkbox]", toggleImgDisplay);
+$('#ctrPanel').on("change", "input[type=checkbox]", toggleImgDisplay);
 
+$('#clock').on("click", function(){
+	turnBlue();
+	setTimeout(turnGreen, 10000);
+	setTimeout(turnYellow, 20000);
+	setTimeout(turnRed, 30000);
+	setTimeout(turnBlack, 35000);
+});
+
+/*
+$('#clock').on("click", function(){
+	switchLight("blue");
+	setTimeout(switchLight("green"), 1000);
+	setTimeout(switchLight("yellow"), 2000);
+	setTimeout(switchLight("red"), 3000);
+	setTimeout(switchLight("black"), 3500);
+});
+*/
 
 
 

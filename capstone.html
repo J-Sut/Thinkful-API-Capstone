@@ -3,25 +3,31 @@
 <head>
 	<title>Table Topics Generator</title>
 	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css?family=Nunito|Roboto+Mono" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="capstone.css">
 </head>
 <body>
-
-	<header>
+	<div id="topNav">
 		<h1>Table Topics Generator</h1>
+	</div>	
+		<header>
 
 		<div id="navBar">
 			<form id="inputForm">
 				<input type="text" name="searchbar" id="input_area">
-				<button id="submit" type="submit">Run API Query</button>
+				<button id="submit" type="submit">Find Topic</button>
 			</form>
-			
-			<section id="instructions">
+		</div>	<!-- navBar -->
+		<div id="ctrPanel">
+			<ul id="panelDisplay"></ul>
+		</div> <!-- ctrPanel -->
+		<section id="clock">Start</section>
+		<section id="instructions">
 				<h3 id="instructionsTitle">How it works</h3>
 				<div id="writtenInstructions">
 					<div class="instructionSection">
 						<p>Table topics are a chance to practice impromptu speaking.</p>
-						<p>The purpose is to practice organizing our thoughts on the fly. This practice helps us to thrive in those moments when life calls on us to rise to occasion from interviews, to dates, meetings, and much more.</p>
+						<p>The purpose is to help practice organizing our thoughts on the fly. This practice helps us to thrive in those moments when life calls on us to rise to occasion from interviews, to dates, meetings, and much more.</p>
 					</div> <!-- instructionSection -->
 					<div class="instructionSection">
 						<h3>How it works</h3>
@@ -31,7 +37,8 @@
 								<li>The Table Topics Generator will first find 5 words related to your search. </li>
 								<li>For each word returned, it will then search Flickr and return up to 3 images.</li>
 								<li>Use the content from the images as a starting point for you talk, and take it wherever you want from there.</li>
-								<li>You don't have to incorporate all the images, but you can try if you like.</li>
+								<li>Choose 2-3 image groups. Unmark the checkboxes to hide any groups of images that you'd prefer not to speak on.</li>
+								<li>You don't have to incorporate all the images.</li>
 								<li>Remember, this is an exercise in imagination so feel free to make up a story or speak on any subject that comes to mind.</li>
 							</ul>
 					</div> <!-- instructionSection -->
@@ -42,12 +49,7 @@
 					</div> <!-- instructionSection -->
 				</div> <!-- writtenInstructions -->
 			</section> <!-- instructions -->
-		</div>			
 	</header>
-
-	<div id="ctrPanel">
-		<ul id="panelDisplay"></ul>
-	</div> <!-- ctrPanel -->
 
 	<span id="loadingScreen" class="hide">Loading...</span>
 
