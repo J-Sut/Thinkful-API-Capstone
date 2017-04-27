@@ -87,11 +87,11 @@ function displayFlickrResults(data, term) {
 	//console.log("inside displayFlickrResults");
 };
 
-$('#instructions').accordion({
-	collapsible: true,
-	event: "click",
-	active: 2
-});
+// $('#instructions').accordion({
+// 	collapsible: true,
+// 	event: "click",
+// 	active: 2
+// });
 
 function makeCtrPanel(term) {
 	let termClass = term.replace(" ", "-");
@@ -159,6 +159,15 @@ $('#clock').on("click", function(){
 	setTimeout(turnRed, 30000);
 	setTimeout(turnBlack, 35000);
 });
+
+$('#instructionsPopUp').on('click', function(e){
+  e.preventDefault();
+  $('#instructionsPopUp').fadeOut('slow');
+})
+$('#showInstructions').on('click', function(e){
+  e.preventDefault();
+  $('#instructionsPopUp').fadeIn('slow');
+})
 
 /*
 $('#clock').on("click", function(){
