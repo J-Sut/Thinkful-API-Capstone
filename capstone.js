@@ -104,10 +104,16 @@ function makeCtrPanel(term) {
 	$('#panelDisplay').append(ctrlPanelList);
 };
 
-function toggleImgDisplay(){
+function toggleImgDisplay() {
 	var term = $(this).val();
 	$('div.'+term).toggleClass("hide");
 };
+
+
+function showClock() {
+	$('#clock').removeClass("hide");
+};
+
 
 /*
 function switchLight(color) {
@@ -142,12 +148,15 @@ $('instructionsTitle').hover('cursor: pointer', 'cursor: hand');
 $('form').on("submit", function(e) {
 	e.preventDefault();
 
+
+
 	var searchTerm = $('#input_area').val();
 
 	getFlickrApiData(searchTerm, displayFlickrResults);
 	getRelatedWords(searchTerm, gotRelatedWords);
 	clearPastResults();
 	loadHappening(true);
+	showClock();
 });
 
 $('#ctrPanel').on("change", "input[type=checkbox]", toggleImgDisplay);
@@ -163,10 +172,12 @@ $('#clock').on("click", function(){
 $('#instructionsPopUp').on('click', function(e){
   e.preventDefault();
   $('#instructionsPopUp').fadeOut('slow');
+  $('#showInstructions').fadeIn('slow');
 })
 $('#showInstructions').on('click', function(e){
   e.preventDefault();
   $('#instructionsPopUp').fadeIn('slow');
+  $('#showInstructions').fadeOut('fast');
 })
 
 /*
