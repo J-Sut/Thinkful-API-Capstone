@@ -3,12 +3,13 @@
 <head>
 	<title>Table Topics Generator</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://fonts.googleapis.com/css?family=Nunito|Roboto+Mono" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="capstone.css">
 </head>
 <body>
 
-	<div id='instructionsPopUp'>
+	<div id='instructionsPopUp' class="hide">
 		<section id="instructions">
 			<h3 id="instructionsTitle">What are Table Topics?</h3>
 			<div id="writtenInstructions">
@@ -38,24 +39,21 @@
 		</section> <!-- instructions -->
 	</div> <!-- instructionsPopUp -->
 
-	<div id="topNav">
-		<h1>Table Topics Generator</h1>
-	</div>	
-
 	<header>
-		<div id="navBar">
-			<form id="inputForm">
-				<input type="text" name="searchbar" id="input_area">
-				<button id="submit" type="submit">Find Topic</button>
-			</form>
-		</div>	<!-- navBar -->
+		<h1>Table Topics Generator</h1>
+		<h2>A tool for Toastmasters</h2>
 	</header>
 
 	<div id="ctrPanel">
-		<button id="showInstructions" class="hide">Show Instructions</button> <br>
-		<section id="clock" class="hide">Start</section>
-		<ul id="panelDisplay"></ul>
-		
+		<section id="topNav">
+			<form id="inputForm">
+				<input type="text" name="searchbar" id="input_area">
+				<button id="submit" type="submit">Find Topic</button> 
+				<button id="showInstructions">Show Instructions</button> 	
+			</form>	<!-- inputForm -->	
+		</section> <!-- topNav -->
+		<ul id="panelDisplay"></ul>	
+		<section id="clock" class="hide">Start</section>	
 	</div> <!-- ctrPanel -->
 
 
