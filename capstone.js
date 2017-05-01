@@ -42,7 +42,9 @@ function getFlickrApiData(term, callback) {
 // https://farm3.staticflickr.com/2844/33709591326_08e51b4564.jpg
 
 // ************************ 3) f(render-State) ************************
-
+window.onload = (function(e){
+  setTimeout(showInstructions, 3500);
+});
 
 function loadHappening(visible) {
 	if (visible) {
@@ -109,11 +111,17 @@ function toggleImgDisplay() {
 	$('div.'+term).toggleClass("hide");
 };
 
+function showInstructions() {
+	$('#instructionsPopUp').fadeIn('slow');
+};
+
+function hideInstructions() {
+	$('#instructionsPopUp').fadeOut('slow');
+};
 
 function showClock() {
 	$('#clock').removeClass("hide");
 };
-
 
 /*
 function switchLight(color) {
@@ -148,8 +156,6 @@ $('instructionsTitle').hover('cursor: pointer', 'cursor: hand');
 $('form').on("submit", function(e) {
 	e.preventDefault();
 
-
-
 	var searchTerm = $('#input_area').val();
 
 	getFlickrApiData(searchTerm, displayFlickrResults);
@@ -171,14 +177,16 @@ $('#clock').on("click", function(){
 
 $('#instructionsPopUp').on('click', function(e){
   e.preventDefault();
-  $('#instructionsPopUp').fadeOut('slow');
-  $('#showInstructions').fadeIn('slow');
-})
+  hideInstructions();
+});
+
 $('#showInstructions').on('click', function(e){
   e.preventDefault();
-  $('#instructionsPopUp').fadeIn('slow');
-  $('#showInstructions').fadeOut('fast');
-})
+  showInstructions();
+});
+
+
+
 
 /*
 $('#clock').on("click", function(){
