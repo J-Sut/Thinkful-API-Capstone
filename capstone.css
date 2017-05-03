@@ -55,7 +55,6 @@ h2 {
 	font-size: 2em;
 	margin-left: auto;
 	margin-right: auto;
-	width: 100%;
 }
 
 div {
@@ -84,8 +83,11 @@ label {
 	cursor: pointer; 
 }
 
+button {
+	vertical-align: top;
+}
+
 #headline {
-	width: 100%;
 }
 
 #subtitle {
@@ -155,12 +157,11 @@ label {
 	background-color: /*yellow*/ rgba(242, 213, 123, 1);
 	border: 2px solid /*red*/ rgba(117, 27, 43, 1);
 	cursor: pointer;
-	vertical-align: top;
 }
 
 #hideInstructions {
-	margin-left: auto;
-	margin-right: auto;
+	position: absolute;
+	bottom: 5px;
 }
 
 #showInstructions {
@@ -171,7 +172,7 @@ label {
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0,0,0,0.7); 
+	background-color: rgba(0,0,0,0.85); 
 	cursor: pointer;
 	z-index: 100;
 	text-align: center;
@@ -309,22 +310,26 @@ label {
 		margin-right: auto;
 		width: 100%;
 		padding-top: 75px;
-		padding-bottom: 5px;
+		padding-bottom: 0px;
 	}
 
 	h2 {	
-		color: rgba(242, 213, 123, 1);
 		text-align: center;
 		font-size: 1.3em;
 		margin-left: auto;
 		margin-right: auto;
-		width: 100%;
-		padding-top: 5px;
+		padding-top: 0px;
 	}
 
 	form button {
 		display: inline-block;
 		margin-top: 10px;
+		border: 1px solid black;
+	}
+
+	form input {
+		display: block;
+		margin: auto;
 	}
 
 	#instructionsPopUp {
@@ -343,8 +348,10 @@ label {
 		background-color: rgba(242, 213, 123, .8);
 		width: 95%;
 		padding: 3px;
-		width: 90%;
-		height: 90%;
+		margin-bottom: 50px;
+		width: 80%;
+		height: 85%;
+		text-align: center;
 	/*	position: absolute;
 		margin: auto;
 		top:0;
@@ -362,13 +369,12 @@ label {
 	}
 
 	#writtenInstructions {
-/*		text-align: center;
-		margin-left: auto;
-		margin-right: auto;*/
+		padding-bottom: 25px;
+
 	}
 
 	#ctrPanel {
-		height: 300px;
+		height: 250px;
 
 /*		font-size: 1.2em;
 		color: rgba(242, 243, 243, 1);
@@ -387,7 +393,12 @@ label {
 		*/
 	}
 
+	#panelDisplay {
+		margin-top: 15px;
+	}
+
 	#clock {
+		left: 10px;
 	
 /*		background-color: grey;
 		height: 50px;
