@@ -43,7 +43,7 @@ function getFlickrApiData(term, callback) {
 
 // ************************ 3) f(render-State) ************************
 window.onload = (function(e){
-  setTimeout(showInstructions, 3500);
+  setTimeout(showInstructions, 500);
 });
 
 function loadHappening(visible) {
@@ -120,7 +120,7 @@ function hideInstructions() {
 };
 
 function showClock() {
-	$('#clock').removeClass("hide");
+	$('#clock').fadeIn('slow');
 };
 
 /*
