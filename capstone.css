@@ -132,6 +132,14 @@ button {
 	margin-right: auto;
 }
 
+#navFooter {
+	text-align: center;
+	position: absolute;
+	bottom: 5px;
+	left: 0;
+	right: 0;
+}
+
 #inputForm {
 	max-width: 50%;
 	display: block;
@@ -160,12 +168,11 @@ button {
 }
 
 #hideInstructions {
-	position: absolute;
-	bottom: 5px;
+
 }
 
 #showInstructions {
-	margin-left: 150px;
+	margin-left: 100px;
 }
 
 #instructionsPopUp {
@@ -324,6 +331,7 @@ button {
 	form button {
 		display: inline-block;
 		margin-top: 10px;
+		margin-left: 10px;
 		border: 1px solid black;
 	}
 
@@ -343,7 +351,6 @@ button {
 */	}
 
 	#instructions {
-
 		color: rgba(117, 27, 43, 1); 
 		background-color: rgba(242, 213, 123, .8);
 		width: 95%;
@@ -361,7 +368,7 @@ button {
 	}
 
 	#showInstructions {
-		margin-left: 0px;
+		margin-left: 10px;
 	}
 
 	#instructionsTitle {
