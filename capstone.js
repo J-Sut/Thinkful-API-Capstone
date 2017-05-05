@@ -43,7 +43,7 @@ function getFlickrApiData(term, callback) {
 
 // ************************ 3) f(render-State) ************************
 window.onload = (function(e){
-  setTimeout(showInstructions, 500);
+  setTimeout(showInstructions, 2000);
 });
 
 function loadHappening(visible) {
@@ -119,8 +119,9 @@ function hideInstructions() {
 	$('#instructionsPopUp').fadeOut('slow');
 };
 
-function showClock() {
+function showInstruments() {
 	$('#clock').fadeIn('slow');
+	$('#panelDisplay').show();
 };
 
 /*
@@ -134,7 +135,7 @@ function turnBlue() {
 };
 
 function turnGreen() {
-	$('#clock').css("background-color", "green")
+	$('#clock').css("background-color", "lightgreen")
 };
 
 function turnYellow() {
@@ -142,7 +143,7 @@ function turnYellow() {
 };
 
 function turnRed() {
-	$('#clock').css("background-color", "red")
+	$('#clock').css("background-color", "darkred")
 };
 
 function turnBlack() {
@@ -162,7 +163,7 @@ $('form').on("submit", function(e) {
 	getRelatedWords(searchTerm, gotRelatedWords);
 	clearPastResults();
 	loadHappening(true);
-	showClock();
+	showInstruments();
 });
 
 $('#ctrPanel').on("change", "input[type=checkbox]", toggleImgDisplay);
