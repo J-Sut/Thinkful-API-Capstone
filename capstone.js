@@ -1,4 +1,5 @@
 // ************************ 1) State ************************
+var secondHand
 
 // ************************ 2) f(modify-State) ************************
 
@@ -120,34 +121,33 @@ function hideInstructions() {
 };
 
 function showInstruments() {
-	$('#clock').fadeIn('slow');
+	$('#clock').fadeIn('slow').css('display', 'flex');
 	$('#panelDisplay').show();
 };
 
-/*
-function switchLight(color) {
-	$('#clock').css("background-color", color)
-};
-*/
+function startTimer() {
+		let tick = 0; 
+		$('#clock').css("background-color", "rgba(1, 62, 95, 1)")
+		.text("");
+	function tickClock() {
+		tick++;
+		console.log(tick);
+		$('#clock').text(tick);
+		if (tick === 4) {
+			$('#clock').css("background-color", "rgb(75, 202, 16)")
+		} else if (tick === 8) {
+			$('#clock').css("background-color", "rgb(232, 228, 12)")
+		} else if (tick === 12) {
+			$('#clock').css("background-color", "rgb(209, 19, 19)")
+		} else if (tick === 16) {
+			$('#clock').css("background-color", "black")
+		} else if (tick === 20) {
+			clearInterval(secondHand);
+			$('#clock').text("Start");
+		} 
+	};
 
-function turnBlue() {
-	$('#clock').css("background-color", "rgba(1, 62, 95, 1)")
-};
-
-function turnGreen() {
-	$('#clock').css("background-color", "lightgreen")
-};
-
-function turnYellow() {
-	$('#clock').css("background-color", "yellow")
-};
-
-function turnRed() {
-	$('#clock').css("background-color", "darkred")
-};
-
-function turnBlack() {
-	$('#clock').css("background-color", "black")
+	secondHand = setInterval(tickClock, 1000);
 };
 
 $('instructionsTitle').hover('cursor: pointer', 'cursor: hand');
@@ -166,15 +166,7 @@ $('form').on("submit", function(e) {
 	showInstruments();
 });
 
-$('#ctrPanel').on("change", "input[type=checkbox]", toggleImgDisplay);
-
-$('#clock').on("click", function(){
-	turnBlue();
-	setTimeout(turnGreen, 10000);
-	setTimeout(turnYellow, 20000);
-	setTimeout(turnRed, 30000);
-	setTimeout(turnBlack, 35000);
-});
+$('#ctrPanel').on("change", "input[type=checkbox]", toggleImgDisplay); 
 
 $('#instructionsPopUp').on('click', function(e){
   e.preventDefault();
@@ -186,8 +178,18 @@ $('#showInstructions').on('click', function(e){
   showInstructions();
 });
 
+$('#clock').on('click', function() {
+	clearInterval(secondHand);
+	startTimer();
+});
 
-
+//$('#clock').on("click", function(){
+// 	turnBlue();
+// 	setTimeout(turnGreen, 10000);
+// 	setTimeout(turnYellow, 20000);
+// 	setTimeout(turnRed, 30000);
+// 	setTimeout(turnBlack, 35000);
+// });
 
 /*
 $('#clock').on("click", function(){
@@ -199,6 +201,9 @@ $('#clock').on("click", function(){
 });
 */
 
+// use this to fix the clock
+// var tick = 0; setInterval(function(){ tick++;console.log(tick) }, 1000)
+// 16
 
 
 
