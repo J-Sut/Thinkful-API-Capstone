@@ -212,6 +212,9 @@ button {
 	border-radius: 100%;
 	text-align: center;	
 	cursor: pointer;
+	align-items: center;	
+	justify-content: center;
+
 }
 
 #instructions {
@@ -301,12 +304,12 @@ button {
 }
 
 .green {
-	color: lightgreen;
+	color: rgb(75, 202, 16);
 	padding:0;
 }
 
 .red {
-	color: darkred;
+	color: rgb(209, 19, 19);
 	padding:0;
 }
 
