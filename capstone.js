@@ -1,4 +1,5 @@
 // ************************ 1) State ************************
+var secondHand
 
 // ************************ 2) f(modify-State) ************************
 
@@ -124,12 +125,13 @@ function showInstruments() {
 	$('#panelDisplay').show();
 };
 
-function startTimer(color) {
+function startTimer() {
 		let tick = 0; 
 		$('#clock').css("background-color", "rgba(1, 62, 95, 1)")
 		.text("");
 	function tickClock() {
 		tick++;
+		console.log(tick);
 		$('#clock').text(tick);
 		if (tick === 4) {
 			$('#clock').css("background-color", "rgb(75, 202, 16)")
@@ -145,7 +147,7 @@ function startTimer(color) {
 		} 
 	};
 
-	let secondHand = setInterval(tickClock, 1000);
+	secondHand = setInterval(tickClock, 1000);
 };
 
 $('instructionsTitle').hover('cursor: pointer', 'cursor: hand');
@@ -176,7 +178,10 @@ $('#showInstructions').on('click', function(e){
   showInstructions();
 });
 
-$('#clock').on('click', startTimer);
+$('#clock').on('click', function() {
+	clearInterval(secondHand);
+	startTimer();
+});
 
 //$('#clock').on("click", function(){
 // 	turnBlue();
