@@ -80,7 +80,7 @@ li {
 
 label {
 	padding: 1px 3px 1px 3px;
-	margin: 5px 7px 5px 7px;
+	margin: 5px 12px 5px 12px;
 	cursor: pointer; 
 	display: inline-block;
 	border: 1px solid rgba(242, 213, 123, 1);
@@ -90,12 +90,8 @@ button {
 	vertical-align: top;
 }
 
-#headline {
-}
-
 #subtitle {
 	color: rgba(242, 213, 123, 1);
-
 }
 
 #ctrPanel {
@@ -373,7 +369,7 @@ button {
 
 	label {
 		padding: 1px 3px 1px 3px;
-		margin: 3px 3px 3px 3px;
+		margin: 3px 5px 3px 5px;
 		cursor: pointer; 
 		display: inline-block;
 		border: 1px solid rgba(242, 213, 123, 1);
