@@ -90,12 +90,6 @@ function displayFlickrResults(data, term) {
 	//console.log("inside displayFlickrResults");
 };
 
-// $('#instructions').accordion({
-// 	collapsible: true,
-// 	event: "click",
-// 	active: 2
-// });
-
 function makeCtrPanel(term) {
 	let termClass = term.replace(" ", "-");
 	let ctrlPanelList = $('<li>', {class: 'imgDisplay'});
@@ -126,26 +120,28 @@ function showInstruments() {
 };
 
 function startTimer() {
+
 		let tick = 0; 
-		$('#clock').css("background-color", "rgba(1, 62, 95, 1)")
-		.text("");
-	function tickClock() {
-		tick++;
-		console.log(tick);
-		$('#clock').text(tick);
-		if (tick === 4) {
-			$('#clock').css("background-color", "rgb(75, 202, 16)")
-		} else if (tick === 8) {
-			$('#clock').css("background-color", "rgb(232, 228, 12)")
-		} else if (tick === 12) {
-			$('#clock').css("background-color", "rgb(209, 19, 19)")
-		} else if (tick === 16) {
-			$('#clock').css("background-color", "black")
-		} else if (tick === 20) {
-			clearInterval(secondHand);
-			$('#clock').text("Start");
-		} 
-	};
+		$('#clock').css("background-color", "rgba(1, 62, 95, 1)").text("");
+
+		function tickClock() {
+			tick++;
+			$('#clock').text(tick);
+			if (tick === 60) {
+				$('#clock').css("background-color", "rgb(75, 202, 16)")
+			} else if (tick === 90) {
+				$('#clock').css("background-color", "rgb(232, 228, 12)")
+			} else if (tick === 120) {
+				$('#clock').css("background-color", "rgb(209, 19, 19)")
+			} else if (tick === 150) {
+				$('#clock').css("background-color", "black")
+			} else if (tick === 180) {
+				clearInterval(secondHand);
+				$('#clock').text("Start");
+				timerStatus = false;
+				console.log(timerStatus);
+			} 
+		};
 
 	secondHand = setInterval(tickClock, 1000);
 };
@@ -183,27 +179,9 @@ $('#clock').on('click', function() {
 	startTimer();
 });
 
-//$('#clock').on("click", function(){
-// 	turnBlue();
-// 	setTimeout(turnGreen, 10000);
-// 	setTimeout(turnYellow, 20000);
-// 	setTimeout(turnRed, 30000);
-// 	setTimeout(turnBlack, 35000);
-// });
-
-/*
-$('#clock').on("click", function(){
-	switchLight("blue");
-	setTimeout(switchLight("green"), 1000);
-	setTimeout(switchLight("yellow"), 2000);
-	setTimeout(switchLight("red"), 3000);
-	setTimeout(switchLight("black"), 3500);
+$('#showStatus').on('click', function() {
+	console.log(timerStatus);
 });
-*/
-
-// use this to fix the clock
-// var tick = 0; setInterval(function(){ tick++;console.log(tick) }, 1000)
-// 16
 
 
 
